@@ -4,14 +4,23 @@
     import 'iconify-icon';
     let clicked = 'Latest';
 
+    function getDays(params:string) {
+        let days = new Date(params).getDate();
+        let today = new Date().getDate();
+
+
+
+        console.log(days, ":::", today, today-days, params)
+
+        return days
+    }
+
   </script>
   
 
 <section class="p-5">
     <p>Good morning</p>
-    <div>
-        <p class="text-bold">Top Sheaves</p>
-    </div>
+
 
     <div class="w-full">
         <button  class="rounded-md w-full py-2 text-center bg-[#292d36] text-white my-5 ">Write Book</button>
@@ -41,21 +50,21 @@
     </div>
 
 
-    <div class="">
+    <div class="inline-block md:grid grid-cols-2 gap-3">
         {#each fakeBooks as book}
            <div class="flex gap-3 items-start mb-3">
-            <img src={book.coverArtUrl} alt='' class="h-[150px] w-[100px] object-contain  rounded-lg"/>
-            <div class="mx-2">
-                <h1 class="text-2xl font-bold">{book.name}</h1>
+            <img src={book.coverArtUrl} alt='cover' class="h-[200px] w-[130px] object-fill  rounded-lg bg-slate-50"/>
+            <div class="mx-2 relative h-[200px]">
+                <h1 class="text-xl font-bold">{book.name}</h1>
                 <h3 class="text-gray-500">{book.author}</h3>
-                <div class="flex gap-2">
-                   <div><iconify-icon icon="material-symbols:alarm-outline-rounded"></iconify-icon> <p>{book.releaseDate}</p></div>
-                   <div class="ml-3"> <iconify-icon icon="system-uicons:pages" /><p>{book.numberOfPages}</p></div>
+                <div class="flex gap-2 items-baseline">
+                   <div class="flex items-center"><iconify-icon icon="material-symbols:alarm-outline-rounded"></iconify-icon> <span>{getDays(book.releaseDate)}</span></div>
+                   <div class="flex items-center"> <iconify-icon icon="system-uicons:pages" /><span>{book.numberOfPages}</span></div>
                 </div>
-                <div class="rounded-lg py-1 px-3 bg-[#bbbbbb3b]">{book.genre}</div>
+                <div class={`rounded-lg ${book.genre.toLowerCase()} py-1 px-3 w-fit text-center bg-[#bbbbbb3b] absolute bottom-2 font-bold`}>{book.genre}</div>
             </div>
             <button class="border-2">
-              <iconify-icon icon="ic:outline-bookmark-border" />
+              <iconify-icon icon="material-symbols:bookmark-rounded" />
             </button>
            </div>
         {/each}

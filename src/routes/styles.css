@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 body {
-	@apply bg-white dark:bg-slate-800 text-slate-900 dark:text-white;
+	@apply dark:bg-white bg-[#1d212b] dark:text-slate-900 text-white;
 	font-family: 'Nunito', sans-serif;
 }
 
@@ -15,11 +15,71 @@ body {
 }
 
 .custom-text {
-    background: linear-gradient(45deg, #ff8b8b, #f9ff45);
+    background: linear-gradient(45deg, #fa784a, #1590f7);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
     font-family: 'Play', sans-serif;
+}
+
+/* Horror */
+.horror {
+  background-color: #f0000047;
+  color: #f22323;
+}
+
+/* Fantasy */
+.fantasy {
+  background-color: #4a91e246;
+  color: #325d8b;
+}
+
+/* Romance */
+.romance {
+  background-color: #ff73a246;
+  color: #e0477d;
+}
+
+/* Adventure */
+.adventure {
+  background-color: #66cdab47;
+  color: #388b70;
+}
+
+/* Mystery */
+.mystery {
+  background-color: #9c59b646;
+  color: #6c389c;
+}
+
+/* Science Fiction */
+.science {
+  background-color: #95a5a645;
+  color: #6b7b7c;
+}
+
+/* Historical Fiction */
+.historical {
+  background-color: #ffd7005c;
+  color: #b1972c;
+}
+
+/* Thriller */
+.thriller {
+  background-color: #ff583346;
+  color: #a33e20;
+}
+
+/* Comedy */
+.comedy {
+  background-color: #f4d03f46;
+  color: #c4a428;
+}
+
+/* Drama */
+.drama {
+  background-color: #d3540044;
+  color: #a23500;
 }
 
 .scroll-container {
