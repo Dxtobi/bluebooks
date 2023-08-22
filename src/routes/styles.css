@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 body {
-	@apply dark:bg-white bg-[#1d212b] dark:text-slate-900 text-white;
+	@apply bg-white dark:bg-[#1d212b] text-slate-900 dark:text-white;
 	font-family: 'Nunito', sans-serif;
 }
 
