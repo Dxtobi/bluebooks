@@ -1,27 +1,47 @@
 
 <script lang="ts">
-	import fakeBooks from '$lib/fakedb/fakebooks';
-    import 'iconify-icon';
+	import Write from './../../components/icons/Write.svelte';
+	
+   
 	import Clock from '../../components/icons/Clock.svelte';
 	import Pages from '../../components/icons/Pages.svelte';
 	import Bookmark from '../../components/icons/Bookmark.svelte';
 	import { getRelativeTime } from '$lib/constants/myFunctions';
+	import fakeBooks from '$lib/fakedb/fakebooks';
+	import Star from '../../components/icons/Star.svelte';
+
+    export let data;
+    const books = fakeBooks;
     let clicked = 'Latest';
+
+    const {user} = data
+   // console.log(data)
 
   </script>
   
 
 <section class="p-5">
-    <p>Good morning</p>
+   {#if user}
+   <div class="flex justify-between">
+    <div>
+        <p>Good Day</p>
+        <h2 class="font-bold text-xl">@{user.username}</h2>
+    </div>
+    <div class="flex text-sm text-white bg-[#fa784a] items-center justify-between rounded-full py-1 px-2 h-[30px]">
+        <div class="flex w-[20px] h-[20px] bg-[#00000022] items-center justify-center rounded-full mr-2 text-white"><Star color='#fff'/></div>
+        <div>{user.points} points</div>
+    </div>
+   </div>
+   {/if}
 
-
-    <div class="w-full">
-        <button  class="rounded-md w-full py-2 text-center bg-[#292d36] text-white my-5 ">Write Book</button>
+    <div class="rounded-md w-full  text-center bg-[#292d36] text-white my-5 flex justify-between p-2">
+        <a href="/new"  class=" w-1/2 flex justify-center gap-2 items-center" ><span><Write/></span>Write</a>
+        <button class="border-l w-1/2">Post</button>
     </div>
 
-    <h1>Last Added</h1>
+    <h1>Popular</h1>
     <div class="scroll-container">
-        {#each fakeBooks.splice(0,4) as book}
+        {#each books.slice(0,4) as book}
             <a href={`/book/${book.name}`} class="scroll-item">
                 <img src={book.coverArtUrl} alt="" class="h-[200px] w-[130px] object-contain rounded-lg" />
                 <div class="flex gap-2 my-2 items-center">
@@ -41,7 +61,7 @@
 
 
     <div class="inline-block md:grid grid-cols-2 gap-3">
-        {#each fakeBooks as book}
+        {#each books as book}
            <div class="flex gap-3 items-start mb-3">
             <img src={book.coverArtUrl} alt='cover' class="h-[200px] w-[130px] object-fill  rounded-lg bg-slate-50"/>
             <div class="mx-2 relative h-[200px]">

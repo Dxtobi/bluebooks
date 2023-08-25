@@ -21,11 +21,13 @@
 </section>
 
 
-<p class="text-center">Be amongst the first to experience this community</p>
+<p class="text-center">Get daily update</p>
 <div class="md:w-1/2 m-auto w-[80%] shadow-md my-2 p-1 rounded-md">
-    <button class="rounded-md outline-none px-3 py-1 text-white bg-green-700">Join</button>
-    <input class="outline-none p-2" placeholder="Join White List"/>
+    <button class="rounded-md outline-none px-3 py-1 text-white bg-green-700">Subscribe</button>
+    <input class="outline-none p-2" placeholder="email"/>
   </div>
 
 
-  <a href="/books" class="text-center w-full px-5 py-2  my-5">View Books</a>
+  <div class="w-full grid place-content-center">
+    <a href="/books" class="text-center w-full px-5 py-2  my-5">View Books</a>
+  </div>

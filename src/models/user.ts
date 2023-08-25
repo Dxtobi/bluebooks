@@ -6,7 +6,9 @@ interface User extends Document {
   points: number;
   createdAt: Date;
     updatedAt: Date;
-    _id: string;
+  _id: string;
+  password: string;
+  userAuthToken: string;
 }
 
 type UserModel = Model<User>
@@ -27,6 +29,15 @@ const userSchema = new mongoose.Schema<User, UserModel>(
       type: Number,
       default: 0,
     },
+    password: {
+      type: String,
+      required: true,
+    },
+    userAuthToken: {
+      type: String,
+      required: true,
+    },
+    
   },
   {
     timestamps: true,

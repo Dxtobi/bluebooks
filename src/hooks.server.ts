@@ -18,19 +18,19 @@ export const handle = async ({event, resolve}) => {
       event.locals.RATING = RatingModel;
     
     // Find the user based on the session
-    const session = event.cookies.get('session');
+    const session = event.cookies.get('session-book');
  
     if (!session) {
       // If there is no session, load the page as normal
       return await resolve(event);
     }
    
-    const user = await event.locals.USER.findOne({ userAuthToken: session }).exec();
+    const user = await event.locals.USER.findOne({ userAuthToken: session }).select('_id username email points');
    
     // If `user` exists, set `event.locals.user`
       if (user) {
-        console.log(user,user._doc )
-      event.locals.user = serializeNonPOJOs(user._doc);
+        console.log(user.username,'-----------------' )
+      event.locals.user = serializeNonPOJOs(user);
     } 
 
     const response = await resolve(event);

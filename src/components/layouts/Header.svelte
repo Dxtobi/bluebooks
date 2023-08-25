@@ -1,5 +1,9 @@
 <script>
-	
+	export let data
+
+
+    console.log(data)
+    const {user} = data;
 </script>
 
 <header class="fixed left-0 top-0 w-full p-3 flex justify-between z-50 backdrop-blur-[10px]">
@@ -9,7 +13,9 @@
     </div>
 
     <div>
+       {#if !user }
         <a href="/auth" class="px-3 py-1 rounded-full bg-[#fa794a54] text-[#fa784a] font-bold">Create Account</a>
+       {/if}
     </div>
 </header>
 

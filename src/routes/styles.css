@@ -9,17 +9,51 @@ body {
 	font-family: 'Nunito', sans-serif;
 }
 
+*{
+  outline: none;
+}
 
 .bg{
 	background:#1d212b;
 }
-
+.custom-bg{
+  background-color: linear-gradient(45deg, #fa784a, #1590f7);
+ color: white;
+}
+.gradient-border {
+  border: 2px solid transparent;
+  background-clip: padding-box; /* Make sure the gradient is contained within the padding */
+  border-image: linear-gradient(45deg, #fa784a, #1590f7); /* Define the gradient colors */
+  border-image-slice: 1; /* Slices the border image */
+}
+.gradient-border-inv {
+  border: 2px solid transparent;
+  background-clip: padding-box; /* Make sure the gradient is contained within the padding */
+  border-image: linear-gradient(45deg,  #1590f7, #fa784a,); /* Define the gradient colors */
+  border-image-slice: 1; /* Slices the border image */
+}
 .custom-text {
     background: linear-gradient(45deg, #fa784a, #1590f7);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
     font-family: 'Play', sans-serif;
+}
+
+.formarters{
+  
+}
+
+  .formarters.active {
+    background: #3e8cd8;
+    color: white;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+h1{
+  font-weight: bolder;
+  font-size: larger;
 }
 
 /* Horror */
