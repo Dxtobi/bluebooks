@@ -32,12 +32,21 @@
         <div>{user.points} points</div>
     </div>
    </div>
+
+   
+   <div class="rounded-md w-full  text-center bg-[#292d36] text-white my-5 flex justify-between p-2">
+    <a href="/new"  class=" w-1/2 flex justify-center gap-2 items-center" ><span><Write/></span>Write</a>
+    <button class="border-l w-1/2">Post</button>
+</div>
+
+
+{:else}
+<div class="mb-6">
+    <p>Good Day</p>
+    <h2 class="font-bold text-sm">Seams like you are logged out</h2>
+</div>
    {/if}
 
-    <div class="rounded-md w-full  text-center bg-[#292d36] text-white my-5 flex justify-between p-2">
-        <a href="/new"  class=" w-1/2 flex justify-center gap-2 items-center" ><span><Write/></span>Write</a>
-        <button class="border-l w-1/2">Post</button>
-    </div>
 
     <h1>Popular</h1>
     <div class="scroll-container">

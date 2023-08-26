@@ -3,6 +3,12 @@
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 
+  export let doc 
+  /**
+	 * @type {(arg0: boolean) => void}
+	 */
+   export let handleSave
+
 	/**
 	 * @type {HTMLDivElement}
 	 */
@@ -20,7 +26,11 @@
 			onTransaction: () => {
 				// force re-render so `editor.isActive` works as expected
 				editor = editor;
-			}
+			},
+      onUpdate:({editor})=>{
+        doc = {plaintext:editor.getText(), richtext:editor.getHTML()}
+  
+      }
 		});
 	});
 
@@ -29,6 +39,15 @@
 			editor.destroy();
 		}
 	});
+
+
+  function saveDraft (){
+    handleSave(false)
+  }
+
+  function puBlish (){
+    handleSave(true)
+  }
 </script>
 
 {#if editor}
@@ -95,21 +114,21 @@
 
     <button
       class="formarters  bg-orange-300 text-orange-700 p-1 px-2 rounded-lg"
-      on:click={() => console.error('not saving')}
+      on:click={saveDraft}
       >
       save draft
     </button>
 
     <button
       class="formarters  bg-blue-300 text-blue-700 p-1 px-2 rounded-lg"
-      on:click={() => console.timeLog('not publishing')}
+      on:click={puBlish}
       >
       publish
     </button>
 	</div>
 {/if}
 
-<div bind:this={element} />
+<div bind:this={element} class="p-3 bg-green-50 rounded-lg min-h-[40vh]"/>
 
 <style>
 </style>

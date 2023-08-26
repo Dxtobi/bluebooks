@@ -1,3 +1,15 @@
+import { v2 as cloudinary } from 'cloudinary';
+import { CLOUDINARY_KEY_API, CLOUDINARY_KEY_SECR } from '$env/static/private';
+import toStream from 'buffer-to-stream';
+
+
+cloudinary.config({
+  cloud_name: 'jaofiles',
+  api_key: CLOUDINARY_KEY_API, // Store in .env.local
+  api_secret: CLOUDINARY_KEY_SECR, // Store in .env.local
+  secure: true
+});
+
 export const serializeNonPOJOs = (/** @type {any} */ obj: unknown) => {
     const f = JSON.stringify(obj);
     
@@ -14,4 +26,31 @@ export const serializeNonPOJOs = (/** @type {any} */ obj: unknown) => {
       }
     }
     return false;
-  }
+}
+  
+
+
+/**
+ * 
+ * Uploads an image to Cloudinary from a File object.
+ * 
+ * 
+ * 
+ * @returns {Promise<import('cloudinary').UploadApiResponse | import('cloudinary').UploadApiErrorResponse>} A Promise resolving to the Cloudinary API response or an error.
+ */
+
+export async function uploadImageToCloudinary(foodImage: { arrayBuffer: () => WithImplicitCoercion<ArrayBuffer | SharedArrayBuffer> | PromiseLike<WithImplicitCoercion<ArrayBuffer | SharedArrayBuffer>>; }) {
+  const buffer = Buffer.from(await foodImage.arrayBuffer());
+ // const result = await uploadImageToCloudinary(buffer);
+  return new Promise((resolve, reject) => {
+    const upload = cloudinary.uploader.upload_stream((error, result) => {
+      if (error) return reject(error);
+      // @ts-ignore
+      resolve(result);
+    });
+
+    const readableStream = toStream(buffer);
+    console.log(readableStream)
+    readableStream.pipe(upload);
+  });
+}

@@ -2,7 +2,7 @@
 	export let data
 
 
-    console.log(data)
+    
     const {user} = data;
 </script>
 

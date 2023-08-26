@@ -10,7 +10,7 @@ body {
 }
 
 *{
-  outline: none;
+  outline: none!important;
 }
 
 .bg{

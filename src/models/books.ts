@@ -2,14 +2,17 @@ import mongoose, { Document, Model } from 'mongoose';
 
 interface Book extends Document {
   title: string;
-  author: string;
-  releaseDate: string;
+  subtitle: string;
+  author: string; //server
+  published: string;
   numberOfPages: number;
-  coverArtUrl: string;
+  coverArtUrl: string;//server
   genre: string;
-  createdAt: Date;
-    updatedAt: Date;
-    _id: string;
+  createdAt: Date;//server
+  updatedAt: Date;//server
+  _id: string;//server
+  richtext: string;
+  plaintext: string;
 }
 
 type BookModel = Model<Book>
@@ -20,17 +23,23 @@ const bookSchema = new mongoose.Schema<Book, BookModel>(
       type: String,
       required: true,
     },
+    subtitle: {
+      type: String,
+      required: true,
+    },
     author: {
       type: String,
       required: true,
     },
-    releaseDate: {
+    published: {
       type: String,
       required: true,
+      default:'true',
     },
+    
     numberOfPages: {
       type: Number,
-      required: true,
+      required: false,
     },
     coverArtUrl: {
       type: String,

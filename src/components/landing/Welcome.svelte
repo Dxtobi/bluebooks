@@ -21,7 +21,7 @@
 </section>
 
 
-<p class="text-center">Get daily update</p>
+<p class="text-center">Get daily updates</p>
 <div class="md:w-1/2 m-auto w-[80%] shadow-md my-2 p-1 rounded-md">
     <button class="rounded-md outline-none px-3 py-1 text-white bg-green-700">Subscribe</button>
     <input class="outline-none p-2" placeholder="email"/>
