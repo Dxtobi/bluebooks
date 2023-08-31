@@ -5,10 +5,11 @@ interface User extends Document {
   email: string;
   points: number;
   createdAt: Date;
-    updatedAt: Date;
+  updatedAt: Date;
   _id: string;
   password: string;
   userAuthToken: string;
+  liked: Array<mongoose.Schema.Types.ObjectId>;
 }
 
 type UserModel = Model<User>
@@ -37,7 +38,10 @@ const userSchema = new mongoose.Schema<User, UserModel>(
       type: String,
       required: true,
     },
-    
+    liked: {
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
+      default: [],
+    },
   },
   {
     timestamps: true,

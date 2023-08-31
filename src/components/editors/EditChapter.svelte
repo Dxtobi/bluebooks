@@ -3,7 +3,10 @@
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 
-  export let doc 
+  /**
+	 * @type {{ richtext: any; plaintext?: string; }}
+	 */
+   export let doc 
   /**
 	 * @type {(arg0: boolean) => void}
 	 */
@@ -22,7 +25,7 @@
 		editor = new Editor({
 			element: element,
 			extensions: [StarterKit],
-			content: '<h1>Once Upon a time</h1><br/>.......',
+			content: doc.richtext,
 			onTransaction: () => {
 				// force re-render so `editor.isActive` works as expected
 				editor = editor;

@@ -1,6 +1,7 @@
 <script>
 	import { applyAction } from '$app/forms';
-	import { goto, invalidateAll } from '$app/navigation';
+	import { goto, invalidate, invalidateAll } from '$app/navigation';
+	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 
 
@@ -52,6 +53,10 @@
 	};
 
 
+	onMount(()=>{
+		invalidateAll()
+	})
+
 
 	const loginFunction = async () => {
 		sending = true;
@@ -73,16 +78,17 @@
 			console.log(result.data)
 			return form = result.data.body.message;
 		}
-		if (result.type === 'success') {
+		if (result.success) {
 			// re-run all `load` functions, following the successful update
 			await invalidateAll();
-			
 		}
 		
 			sending = false;
 			console.log(result);
 			applyAction(result);
-			goto('/books')
+			goto('/books', { invalidateAll: true})
+
+			
 		
 	};
 </script>

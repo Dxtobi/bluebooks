@@ -9,9 +9,10 @@
 	import { getRelativeTime } from '$lib/constants/myFunctions';
 	import fakeBooks from '$lib/fakedb/fakebooks';
 	import Star from '../../components/icons/Star.svelte';
-
+	
+  
     export let data;
-    const books = fakeBooks;
+    const books = data.books;
     let clicked = 'Latest';
 
     const {user} = data
@@ -49,12 +50,18 @@
 
 
     <h1>Popular</h1>
-    <div class="scroll-container">
+    <div class="scroll-container capitalize">
         {#each books.slice(0,4) as book}
-            <a href={`/book/${book.name}`} class="scroll-item">
-                <img src={book.coverArtUrl} alt="" class="h-[200px] w-[130px] object-contain rounded-lg" />
+            <a href={`/book/${book.title}/${book._id}`} class="scroll-item">
+               {#if book.coverArtUrl === "null" }
+               <div  class="h-[200px] w-[130px] object-fill  rounded-lg p-10 bg-slate-300 grid place-content-center" ><div>
+                <h1>{book.title}</h1>
+            </div></div>
+               {:else}
+               <img src={book.coverArtUrl} alt="" class="h-[200px] w-[130px] object-contain rounded-lg" />
+               {/if}
                 <div class="flex gap-2 my-2 items-center">
-                  <div class="flex items-center"><Clock/><span>{getRelativeTime(book.releaseDate)}</span></div>
+                  <div class="flex items-center"><Clock/><span>{getRelativeTime(book.updatedAt)}</span></div>
                   <div class="flex items-center"><Pages/><span class="">{book.numberOfPages}</span></div>
                     
                 </div>
@@ -69,15 +76,22 @@
     </div>
 
 
-    <div class="inline-block md:grid grid-cols-2 gap-3">
+    <div class="inline-block md:grid grid-cols-2 gap-3 w-full capitalize">
         {#each books as book}
-           <div class="flex gap-3 items-start mb-3">
-            <img src={book.coverArtUrl} alt='cover' class="h-[200px] w-[130px] object-fill  rounded-lg bg-slate-50"/>
-            <div class="mx-2 relative h-[200px]">
-                <h1 class="text-xl font-bold">{book.name}</h1>
-                <h3 class="text-gray-500">{book.author}</h3>
+           <a href={`/book/${book.title}/${book._id}`} class="flex gap-3 items-start mb-3 w-full">
+            {#if book.coverArtUrl === "null" }
+            <div  class="h-[150px] w-[100px] object-fill  rounded-lg p-10 bg-slate-300 grid place-content-center" ><div>
+                <h1>{book.title}</h1>
+            </div></div>
+            {:else}
+            <img src={book.coverArtUrl} alt='cover' class="h-[150px] w-[100px] object-fill  rounded-lg bg-slate-50"/>
+            {/if}
+           
+            <div class="mx-2 relative h-[150px] w-full overflow-scroll hide-scroll">
+                <h1 class="text-xl font-bold whitespace-nowrap ">{book.title}</h1>
+                <h3 class="text-gray-500">{book.author.username}</h3>
                 <div class="flex gap-2 items-baseline">
-                   <div class="flex items-center"><Clock/> <span>{getRelativeTime(book.releaseDate)}</span></div>
+                   <div class="flex items-center"><Clock/> <span>{getRelativeTime(book.updatedAt)}</span></div>
                    <div class="flex items-center"> <Pages/><span>{book.numberOfPages}</span></div>
                 </div>
                 <div class={`rounded-lg ${book.genre.toLowerCase()} py-1 px-3 w-fit text-center bg-[#bbbbbb3b] absolute bottom-2 font-bold`}>{book.genre}</div>
@@ -85,7 +99,7 @@
             <button class="border-2">
              <Bookmark/>
             </button>
-           </div>
+           </a>
         {/each}
     </div>
 

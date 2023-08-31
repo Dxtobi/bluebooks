@@ -1,4 +1,7 @@
 import { v2 as cloudinary } from 'cloudinary';
+
+import type {  UploadApiErrorResponse, UploadApiResponse } from 'cloudinary';
+
 import { CLOUDINARY_KEY_API, CLOUDINARY_KEY_SECR } from '$env/static/private';
 import toStream from 'buffer-to-stream';
 
@@ -36,10 +39,10 @@ export const serializeNonPOJOs = (/** @type {any} */ obj: unknown) => {
  * 
  * 
  * 
- * @returns {Promise<import('cloudinary').UploadApiResponse | import('cloudinary').UploadApiErrorResponse>} A Promise resolving to the Cloudinary API response or an error.
+ * @returns {} A Promise resolving to the Cloudinary API response or an error.
  */
 
-export async function uploadImageToCloudinary(foodImage: { arrayBuffer: () => WithImplicitCoercion<ArrayBuffer | SharedArrayBuffer> | PromiseLike<WithImplicitCoercion<ArrayBuffer | SharedArrayBuffer>>; }) {
+export async function uploadImageToCloudinary(foodImage: { arrayBuffer: () => WithImplicitCoercion<ArrayBuffer | SharedArrayBuffer> | PromiseLike<WithImplicitCoercion<ArrayBuffer | SharedArrayBuffer>>; }):Promise<UploadApiErrorResponse | UploadApiResponse> {
   const buffer = Buffer.from(await foodImage.arrayBuffer());
  // const result = await uploadImageToCloudinary(buffer);
   return new Promise((resolve, reject) => {
@@ -53,4 +56,8 @@ export async function uploadImageToCloudinary(foodImage: { arrayBuffer: () => Wi
     console.log(readableStream)
     readableStream.pipe(upload);
   });
+}
+
+export const cloudinaryDecorator = function (target: { addImage: (foodImage: { arrayBuffer: () => WithImplicitCoercion<ArrayBuffer | SharedArrayBuffer> | PromiseLike<WithImplicitCoercion<ArrayBuffer | SharedArrayBuffer>>; }) => Promise<UploadApiErrorResponse | UploadApiResponse>; }) {
+  target.addImage = uploadImageToCloudinary
 }

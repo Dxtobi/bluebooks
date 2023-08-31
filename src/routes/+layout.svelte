@@ -9,6 +9,7 @@
 <div class="app">
 	<Header {data}/>
 
+	
 	<main class="py-24 md:w-[60%] w-full m-auto">
 		<slot />
 	</main>

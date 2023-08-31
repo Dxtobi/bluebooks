@@ -28,7 +28,7 @@ const postSchema = new mongoose.Schema<Post, PostModel>(
         },
         user: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'User', // Replace 'User' with the actual user model
+            ref: 'User', 
             required: true,
         },
     },

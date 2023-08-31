@@ -12,7 +12,8 @@ declare global {
 			BOOK: BookModel;
 			USER: UserModel;
 			RATING: RatingModel;
-			user: User;
+			user: User | null;
+			myStories: Array<Book>;
 		 }
 		interface PageData {
 			 books: Array<Book>
@@ -24,6 +25,7 @@ declare global {
 
 type Book = {
 	title: string;
+	subtitle: string;
 	author: string;
 	releaseDate: string;
 	numberOfPages: number;
@@ -51,5 +53,7 @@ type User =  {
 	updatedAt: Date;
 	_id: string;
 	password: string,
-  }
+}
+  
+
 export {};

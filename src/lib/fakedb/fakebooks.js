@@ -1,6 +1,6 @@
 const fakeBooks = [
     {
-      name: "Whispers of Eternity",
+      name: "Whispers of Eternity of the enternal blood sickers",
       author: "Isabella Rivers",
       releaseDate: "2023-05-15",
       numberOfPages: 320,

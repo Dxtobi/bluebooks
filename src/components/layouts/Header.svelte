@@ -1,12 +1,25 @@
 <script>
-	export let data
+	import { page } from "$app/stores";
+	import { fly, slide } from "svelte/transition";
+	import Clock from "../icons/Clock.svelte";
+	import Likes from "../icons/Likes.svelte";
+	import Pages from "../icons/Pages.svelte";
+	import Star from "../icons/Star.svelte";
+
+	/**
+	 * @type {{ user: any; }}
+	 */
+	 export let data
+     /**
+	 * @type {any}
+	 */
+     let user
+    $:user = data.user
 
 
-    
-    const {user} = data;
 </script>
-
-<header class="fixed left-0 top-0 w-full p-3 flex justify-between z-50 backdrop-blur-[10px]">
+{#if $page.route.id !== '/book/[name]/[id]'}
+<header class="fixed left-0 top-0 w-full p-3 flex justify-between z-50 backdrop-blur-[10px]" in:slide={{delay:200, duration:300}}  out:slide={{delay:200, duration:300}}>
 	<div class="flex  items-center">
         
         <h2 class="custom-text font-bold text-xl">📖SBooks</h2>
@@ -15,7 +28,31 @@
     <div>
        {#if !user }
         <a href="/auth" class="px-3 py-1 rounded-full bg-[#fa794a54] text-[#fa784a] font-bold">Create Account</a>
+        {:else}
+        {#if $page.url.pathname === '/books'}
+            <a href="/discuss">Discuss</a>
+            {:else if $page.url.pathname === '/discuss'}
+            <a href="/books">Lists</a>
+        {/if}
        {/if}
     </div>
 </header>
+{:else}
+<a href="/books" class="fixed left-0  p-2 top-5 z-40 bg-[#ffffff54] backdrop-blur-[10px] white" in:fly={{x:200, delay:250, duration:400}}  out:fly={{x:200, delay:250, duration:400}}>
+Back
+</a>
+<button class="fixed right-0  p-2 top-5 z-40 bg-[#ffffff54] backdrop-blur-[10px] white" in:fly={{x:-200, delay:250, duration:400}}  out:fly={{x:200, delay:250, duration:400}}>
+    <Likes/>
+</button>
+{/if}
+{#if $page.route.id !== '/book/[name]/[id]'}
+<div class="md:w-1/3 w-fill fixed m-auto bottom-0 backdrop-blur-[10px] text-xl md:rounded-xl flex justify-between items-center px-5 p-2 bg-[#ffffff83] left-0 right-0 z-30" in:fly={{y:200, delay:250, duration:400}}  out:fly={{y:200, delay:250, duration:400}}>
+    <Star/>
+    <Pages/>
+    <Clock/>
+    <a href="/profile" class={`flex gap-2 px-3 rounded-xl my-1 ${$page.url.pathname === '/profile' && ' bg-[#23232366] text-white'}`}><Likes/>{$page.url.pathname === '/profile' ? 'Me': ''}</a>
+    
 
+</div>
+
+{/if}

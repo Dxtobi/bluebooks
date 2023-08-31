@@ -1,12 +1,12 @@
-import fakeBooks from '$lib/fakedb/fakebooks.js';
+import { serializeNonPOJOs } from '$lib/utils/utils.js';
 
 export async function load({locals}) {
 
 
-    //await locals.BOOK.find()
+    const allBooks = serializeNonPOJOs(await locals.BOOK.find().populate('author').limit(20).sort({updatedAt:-1}))
     //console.log(fakeBooks)
     return {
-      books: fakeBooks,
+      books: allBooks as Array<Book> ,
       user: locals.user
     };
   }

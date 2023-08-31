@@ -88,7 +88,7 @@ export async function PUT({ request, locals, cookies }) {
         locals.user = user
 
        // console.log(cookies_set, cookies)
-        return json({ successful: true, token:cookies.get('session-kustomer') })
+        return json({ successful: true, token:cookies.get('session-book') })
     } catch (/** @type {message:String| body:{message:string}} */ err) {
         //  console.log(error)
         return json({ error: true, data: err })

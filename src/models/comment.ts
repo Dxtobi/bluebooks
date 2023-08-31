@@ -1,13 +1,13 @@
 import mongoose, { Document, Model } from 'mongoose';
 
 interface Comment extends Document {
-    bookId: mongoose.Types.ObjectId;
-    postId: mongoose.Types.ObjectId;
-  text: string;
+  bookId: mongoose.Types.ObjectId;
+  postId: mongoose.Types.ObjectId;
+  content: string;
   user: mongoose.Types.ObjectId;
   createdAt: Date;
-    updatedAt: Date;
-    _id: string;
+  updatedAt: Date;
+  _id: string;
 }
 
 type CommentModel = Model<Comment>
@@ -17,15 +17,15 @@ const commentSchema = new mongoose.Schema<Comment, CommentModel>(
     bookId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Book',
-     // required: true,
-        },
-      
-        postId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Book',
-           // required: true,
-          },
-    text: {
+      // required: true,
+    },
+
+    postId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Post',
+      required: true,
+    },
+    content: {
       type: String,
       required: true,
     },
