@@ -26,7 +26,7 @@
                 {:else}
                 <img src={book.coverArtUrl} alt="" class="object-contain shadow-md shadow-[#df87ff62] h-[200px] w-[130px] "/>
                {/if}
-                <h1 class="w-1/2">{book.title}</h1>
+                <h1 class="md:w-1/2 w-[80%]">{book.title}</h1>
                 <h2 >{book.author.username}</h2>
                 </div>
             </div>
