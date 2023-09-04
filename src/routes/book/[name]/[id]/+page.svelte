@@ -53,6 +53,6 @@
             <p class="mt-3 line-clamp-6">
                {book.plaintext}</p>    
         </div>
-        <button class="w-[90%] p-3 rounded-lg bg-[#bbb] left-0 right-0 fixed bottom-2 m-auto md:w-1/3">Read for free</button>
+        <a href={`/read/${book._id}`} class="w-[90%] p-3 rounded-lg bg-[#bbb] left-0 right-0 fixed bottom-2 m-auto md:w-1/3">Read for free</a>
     </section>
 </section>
