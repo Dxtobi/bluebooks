@@ -51,7 +51,7 @@
 </script>
 
 {#if editor}
-	<div class="flex justify-between mb-5 bg-slate-200 p-2 rounded-lg">
+	<div class="flex justify-between mb-5 bg-slate-600 p-2 rounded-lg">
 		<button
 			class="formarters"
 			on:click={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
@@ -98,7 +98,7 @@
 
 	<!-- do and undo -->
 
-	<div class="flex gap-5 mb-5 bg-slate-200 p-2 rounded-lg w-fit">
+	<div class="flex gap-5 mb-5 bg-slate-800 p-2 rounded-lg w-fit">
 		<button
 			class="formarters bg-red-300 text-red-700 p-1 rounded-lg px-2"
 			on:click={() => editor.chain().focus().undo().run()}
@@ -128,7 +128,7 @@
 	</div>
 {/if}
 
-<div bind:this={element} class="p-3 bg-green-50 rounded-lg min-h-[40vh]"/>
+<div bind:this={element} class="p-3 bg-gray-500 rounded-lg min-h-[40vh]"/>
 
 <style>
 </style>

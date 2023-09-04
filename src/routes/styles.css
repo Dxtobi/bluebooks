@@ -44,6 +44,9 @@ body {
   
 }
 
+input{
+  background-color: transparent;
+}
   .formarters.active {
     background: #3e8cd8;
     color: white;

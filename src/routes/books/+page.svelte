@@ -16,7 +16,7 @@
     let clicked = 'Latest';
 
     const {user} = data
-   // console.log(data)
+    console.log(data.books)
 
   </script>
   
@@ -54,8 +54,8 @@
         {#each books.slice(0,4) as book}
             <a href={`/book/${book.title}/${book._id}`} class="scroll-item">
                {#if book.coverArtUrl === "null" }
-               <div  class="h-[200px] w-[130px] object-fill  rounded-lg p-10 bg-slate-300 grid place-content-center" ><div>
-                <h1>{book.title}</h1>
+               <div  class="h-[200px] w-[130px] object-fill  rounded-lg  bg-slate-300 grid place-content-center" ><div>
+                <h3 class="p-5">{book.title}</h3>
             </div></div>
                {:else}
                <img src={book.coverArtUrl} alt="" class="h-[200px] w-[130px] object-contain rounded-lg" />
@@ -70,9 +70,9 @@
     </div>
 
     <div class="scroll-container">
-        {#each ['Latest','Top Rated', 'Coming Soon'] as book}
-            <button on:click={()=>clicked = book} class={`scroll-item ${clicked === book && 'font-bold text-xl'}`}>{book}</button>
-        {/each}
+       
+            <button  class={`scroll-item`}>Latest</button>
+       
     </div>
 
 
@@ -80,15 +80,15 @@
         {#each books as book}
            <a href={`/book/${book.title}/${book._id}`} class="flex gap-3 items-start mb-3 w-full">
             {#if book.coverArtUrl === "null" }
-            <div  class="h-[150px] w-[100px] object-fill  rounded-lg p-10 bg-slate-300 grid place-content-center" ><div>
-                <h1>{book.title}</h1>
+            <div  class="h-[150px] w-[100px] object-fill  rounded-lg p-3 bg-slate-300 grid place-content-center" ><div>
+                <h2>{book.title}</h2>
             </div></div>
             {:else}
             <img src={book.coverArtUrl} alt='cover' class="h-[150px] w-[100px] object-fill  rounded-lg bg-slate-50"/>
             {/if}
            
             <div class="mx-2 relative h-[150px] w-full overflow-scroll hide-scroll">
-                <h1 class="text-xl font-bold whitespace-nowrap ">{book.title}</h1>
+                <h2 class=" font-bold whitespace-nowrap ">{book.title}</h2>
                 <h3 class="text-gray-500">{book.author.username}</h3>
                 <div class="flex gap-2 items-baseline">
                    <div class="flex items-center"><Clock/> <span>{getRelativeTime(book.updatedAt)}</span></div>

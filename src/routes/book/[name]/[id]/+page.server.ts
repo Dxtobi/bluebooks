@@ -2,16 +2,22 @@ import { serializeNonPOJOs } from '$lib/utils/utils.js';
 import { redirect } from '@sveltejs/kit';
 
 
-export async function load({locals, url, params}) {
+export async function load({locals,  params}) {
 
    try {
     const Id = params.id;
+      // console.log(url)
+      console.log(params)
+      
+      const res = await locals.BOOK.findOne({ _id: Id }).populate('author');
 
-       console.log(url)
-       console.log(params)
-       const res = await locals.BOOK.findOne({ _id: Id }).populate('author')
-      // console.log(res)
+      locals.BOOK.findByIdAndUpdate(Id,
+         { "$push": { "readBy": locals.user?._id } },
+         { "new": true, "upsert": true },);
+      //readBy
+      //console.log(res)
     if (!res) {
+     
        return  redirect(303, '/books')
     }
     //console.log(fakeBooks)
@@ -22,6 +28,6 @@ export async function load({locals, url, params}) {
     };
    } catch (error) {
        
-    return  redirect(303, '/books')
+      redirect(303, '/books')
    }
   }
