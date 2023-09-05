@@ -21,7 +21,7 @@
     }
 
     #theme-toggle + label {
-        @apply inline-block cursor-pointer h-[30px] w-[30px]  rounded-full duration-300 content-[''];
+        @apply inline-block cursor-pointer h-[25px] w-[25px]  rounded-full duration-300 content-[''];
     }
 
     #theme-toggle:not(:checked) + label {
@@ -30,7 +30,7 @@
     }
 
     #theme-toggle:checked + label {
-        @apply bg-slate-900;
+        @apply bg-[#50505000];
         box-shadow: inset -10px -12px 1px 1px #f0f0f0;
     }
 </style>

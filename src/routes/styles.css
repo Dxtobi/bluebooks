@@ -25,6 +25,10 @@ body {
   background-clip: padding-box; /* Make sure the gradient is contained within the padding */
   border-image: linear-gradient(45deg, #fa784a, #1590f7); /* Define the gradient colors */
   border-image-slice: 1; /* Slices the border image */
+  -o-border-image: linear-gradient(45deg, #fa784a, #1590f7);
+  -webkit-border-image:  linear-gradient(45deg, #fa784a, #1590f7);
+  -moz-border-image:  linear-gradient(45deg, #fa784a, #1590f7);
+  -webkit-background-clip: text;
 }
 .gradient-border-inv {
   border: 2px solid transparent;

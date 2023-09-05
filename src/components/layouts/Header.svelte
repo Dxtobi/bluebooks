@@ -29,7 +29,7 @@
         <h2 class="custom-text font-bold text-xl">📖SBooks</h2>
     </div>
 
-    <div>
+    <div class="flex gap-2 items-center">
        {#if !user }
         <a href="/auth" class="px-3 py-1 rounded-full bg-[#fa794a54] text-[#fa784a] font-bold">Create Account</a>        
        {/if}
