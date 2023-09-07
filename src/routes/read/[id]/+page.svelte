@@ -3,6 +3,8 @@
     
         import { getRelativeTime } from '$lib/constants/myFunctions';
         import fakeBooks from '$lib/fakedb/fakebooks.js';
+	import { TextToSpeech } from '$lib/utils/TextTospeach';
+	import Speak from '../../../components/icons/Speak.svelte';
 	import Dragable from '../../../components/others/Dragable.svelte';
       
         export let data
@@ -15,6 +17,10 @@
        function clangles(params) {
         console.log(params)
        }
+
+const speakFunction = ()=>{
+  TextToSpeech(data.book.plaintext)
+}
     </script>
     
     <section class="p-5">
@@ -26,11 +32,10 @@
       <div  dangerouslySetInnerHTML={{ __html: content }} contenteditable=false bind:innerHTML={content} ></div>
     </section>
     
-    <Dragable>
+ 
      
-       <div class="flex gap-1">
-        <a href="/books" class="bg-gray-800 p-1 px-3 gap-1">Back</a>
-        <button><Speak/></button>
+       <div class="flex gap-4 fixed right-4 top-24  text-white bg-black rounded-[30px]">
+        <a href="/books" class="bg-gray-800 p-2 px-3 gap-1 rounded-l-[30px]">Back</a>
+        <button class="p-2 px-3 rounded-r-[30px] bg-black" on:click={speakFunction}><Speak/></button>
        </div>
       
-    </Dragable>
