@@ -10,7 +10,7 @@
     export let data
     
    const fd =  fakeBooks[0]
-   console.log(data.book.title);
+   //console.log(data.book);
 
    const book = data.book;
 </script>

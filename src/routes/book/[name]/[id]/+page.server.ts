@@ -7,13 +7,15 @@ export async function load({locals,  params}) {
    try {
     const Id = params.id;
       // console.log(url)
-      console.log(params)
+      //console.log(params)
       
       const res = await locals.BOOK.findOne({ _id: Id }).populate('author');
 
-      locals.BOOK.findByIdAndUpdate(Id,
-         { "$push": { "readBy": locals.user?._id } },
-         { "new": true, "upsert": true },);
+      await locals.BOOK.findByIdAndUpdate(
+         Id,
+         { "$addToSet": { "readBy": locals.user?._id } },
+         { "new": true, "upsert": true }
+       );
       //readBy
       //console.log(res)
     if (!res) {

@@ -1,23 +1,23 @@
 
 <script lang="ts">
 	import Write from './../../components/icons/Write.svelte';
-	
-   
 	import Clock from '../../components/icons/Clock.svelte';
 	import Pages from '../../components/icons/Pages.svelte';
 	import Bookmark from '../../components/icons/Bookmark.svelte';
-	import { getRelativeTime } from '$lib/constants/myFunctions';
-	import fakeBooks from '$lib/fakedb/fakebooks';
 	import Star from '../../components/icons/Star.svelte';
+    
+	import { getRelativeTime } from '$lib/constants/myFunctions';
+	
 	
   
     export let data;
     const books = data.books;
-    let clicked = 'Latest';
+   
 
-    const {user} = data
     console.log(data.books)
 
+    let user: { username: string; email: string; points: number; createdAt: Date; updatedAt: Date; _id: string; password: string; } | null
+    $:user = data.user
   </script>
   
 
@@ -37,7 +37,7 @@
    
    <div class="rounded-md w-full  text-center bg-[#292d36] text-white my-5 flex justify-between p-2">
     <a href="/new"  class=" w-1/2 flex justify-center gap-2 items-center" ><span><Write/></span>Write</a>
-    <button class="border-l w-1/2">Post</button>
+    <!-- <button class="border-l w-1/2">Post</button> -->
 </div>
 
 

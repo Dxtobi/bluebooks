@@ -7,8 +7,8 @@ export async function load({locals, url, params}) {
    try {
     const Id = params.id;
 
-       console.log(url)
-       console.log(params)
+      //  console.log(url)
+      //  console.log(params)
        const res = await locals.BOOK.findOne({ _id: Id }).populate('author')
       // console.log(res)
     if (!res) {

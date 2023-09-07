@@ -26,7 +26,7 @@
 
     #theme-toggle:not(:checked) + label {
         @apply bg-white;
-        box-shadow: inset 10px 12px 1px 1px #080634;
+        box-shadow: inset 10px 12px 1px 1px #010108;
     }
 
     #theme-toggle:checked + label {

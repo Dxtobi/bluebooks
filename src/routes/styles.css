@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 body {
-	@apply bg-white dark:bg-[#1d212b] text-slate-900 dark:text-white;
+	@apply bg-white dark:bg-[#05080e] text-slate-900 dark:text-white;
 	font-family: 'Nunito', sans-serif;
 }
 
@@ -38,7 +38,7 @@ body {
   border-image-slice: 1; /* Slices the border image */
 }
 .custom-text {
-    background: linear-gradient(45deg, #fa784a, #1590f7);
+    background: linear-gradient(45deg, #001841, #1590f7);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
@@ -50,7 +50,8 @@ body {
 }
 
 input{
-  background-color: transparent;
+  background-color: #a7a7a77c;
+  color: inherit;
 }
   .formarters.active {
     background: #3e8cd8;
