@@ -46,9 +46,9 @@ Back
 {/if}
 {#if $page.route.id !== '/book/[name]/[id]'}
 <div class="md:w-1/3 w-fill fixed m-auto bottom-0 backdrop-blur-[10px] text-xl md:rounded-xl flex justify-between items-center px-5 p-2 bg-[#ffffff00] left-0 right-0 z-30" in:fly={{y:200, delay:250, duration:400}}  out:fly={{y:200, delay:250, duration:400}}>
-    <a href="/books" class={`items-center flex gap-2 px-3 rounded-xl my-1 ${$page.url.pathname === '/books' && ' bg-[#3b8cdb] text-white'}`}><Home/>{$page.url.pathname === '/books' ? 'home': ''}</a>
-    <a href="/search" class={`items-center flex gap-2 px-3 rounded-xl my-1 ${$page.url.pathname === '/search' && ' bg-[#3b8cdb] text-white'}`}><Search/>{$page.url.pathname === '/search' ? 'search': ''}</a>
-    <a href="/profile" class={`items-center flex gap-2 px-3 rounded-xl my-1 ${$page.url.pathname === '/profile' && ' bg-[#3b8cdb] text-white'}`}><Profile/>{$page.url.pathname === '/profile' ? 'me': ''}</a>
+    <a href="/books" class={`items-center flex gap-2 px-3 rounded-xl my-1 ${$page.url.pathname === '/books' && ' bg-[#e7511c] text-white'}`}><Home/>{$page.url.pathname === '/books' ? 'home': ''}</a>
+    <a href="/search" class={`items-center flex gap-2 px-3 rounded-xl my-1 ${$page.url.pathname === '/search' && ' bg-[#e7511c] text-white'}`}><Search/>{$page.url.pathname === '/search' ? 'search': ''}</a>
+    <a href="/profile" class={`items-center flex gap-2 px-3 rounded-xl my-1 ${$page.url.pathname === '/profile' && ' bg-[#e7511c] text-white'}`}><Profile/>{$page.url.pathname === '/profile' ? 'me': ''}</a>
     
 
 </div>

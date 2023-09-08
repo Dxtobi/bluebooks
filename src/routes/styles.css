@@ -38,7 +38,7 @@ body {
   border-image-slice: 1; /* Slices the border image */
 }
 .custom-text {
-    background: linear-gradient(45deg, #001841, #1590f7);
+    background: linear-gradient(45deg, #fa784a, #b23001);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;

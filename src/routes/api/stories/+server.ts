@@ -6,8 +6,6 @@ import { storyServices } from './actions.providers.js';
 
 /** @type {import('./$types').RequestHandler} */
 
-
-
 //ADD NEW STORY
 export async function POST({ request, locals }) {
     try {
@@ -108,3 +106,24 @@ export async function PUT({ request, locals, url}) {
 }
 
 
+
+
+export async function GET({ url, locals }) {
+    const search = String(url.searchParams.get('search'));
+    const skip = Number(url.searchParams.get('skip') ?? '0');
+    const regex = new RegExp(search, 'i');
+
+   const resp = await locals.BOOK.find({ $or: [
+       { title: { $regex: regex } },
+       {
+           subtitle: { $regex: regex },
+       }
+  ]}).skip(skip);
+
+   if (!resp) {
+    console.log(resp)
+    throw error(400, 'min and max must be numbers, and min must be less than max');
+    }
+
+    return json(resp)
+}

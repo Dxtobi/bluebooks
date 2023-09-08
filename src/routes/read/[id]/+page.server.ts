@@ -9,7 +9,8 @@ export async function load({locals, url, params}) {
 
       //  console.log(url)
       //  console.log(params)
-       const res = await locals.BOOK.findOne({ _id: Id }).populate('author')
+      const res = await locals.BOOK.findOne({ _id: Id }).populate('author')
+      const nextRead =  await locals.BOOK.findOne({ mainStory: Id }).populate('author')
       // console.log(res)
     if (!res) {
        return  redirect(303, '/books')
@@ -17,7 +18,8 @@ export async function load({locals, url, params}) {
     //console.log(fakeBooks)
     return {
         book: serializeNonPOJOs(res) as Book,
-        user: locals.user,
+       user: locals.user,
+       nextRead: serializeNonPOJOs(nextRead) as Book
 
     };
    } catch (error) {

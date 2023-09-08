@@ -32,7 +32,14 @@ const speakFunction = ()=>{
       <div  dangerouslySetInnerHTML={{ __html: content }} contenteditable=false bind:innerHTML={content} ></div>
     </section>
     
- 
+ {#if data?.nextRead?.title}
+ <section class="mt-4 p-5">
+  <div>Next</div>
+  <a href={`/book/${book.title}/${book._id}`} class="text-xl">
+    {data?.nextRead?.title}
+  </a>
+  </section>
+ {/if}
      
        <div class="flex gap-4 fixed right-4 top-24  text-white bg-black rounded-[30px]">
         <a href="/books" class="bg-gray-800 p-2 px-3 gap-1 rounded-l-[30px]">Back</a>

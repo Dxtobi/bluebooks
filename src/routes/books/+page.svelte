@@ -7,14 +7,29 @@
 	import Star from '../../components/icons/Star.svelte';
     
 	import { getRelativeTime } from '$lib/constants/myFunctions';
+	import { onMount } from 'svelte';
 	
 	
   
     export let data;
     const books = data.books;
-   
+   let greetings = '...'
+    onMount(()=>{
+		
+		
+		const currentHour = new Date().getHours();
 
-    console.log(data.books)
+		if (currentHour >= 6 && currentHour < 12) {
+			greetings = 'Good morning 🌞';
+		} else if (currentHour >= 12 && currentHour < 18) {
+			greetings = 'Good afternoon 🌞';
+		} else {
+			greetings = 'You should be sleeping 🌃';
+		}
+
+		console.log(greetings);
+
+	})
 
     let user: { username: string; email: string; points: number; createdAt: Date; updatedAt: Date; _id: string; password: string; } | null
     $:user = data.user
@@ -25,7 +40,7 @@
    {#if user}
    <div class="flex justify-between">
     <div>
-        <p>Good Day</p>
+        <p>{greetings}</p>
         <h2 class="font-bold text-xl">@{user.username}</h2>
     </div>
     <div class="flex text-sm text-white bg-[#fa784a] items-center justify-between rounded-full py-1 px-2 h-[30px]">
@@ -35,8 +50,8 @@
    </div>
 
    
-   <div class="rounded-md w-full  text-center bg-[#292d36] text-white my-5 flex justify-between p-2">
-    <a href="/new"  class=" w-1/2 flex justify-center gap-2 items-center" ><span><Write/></span>Write</a>
+   <div class="rounded-md w-1/2  text-center bg-[#292d36] text-white my-5 flex justify-between p-2">
+    <a href="/new"  class=" w-full  flex justify-center gap-2 items-center " ><span><Write/></span>Write</a>
     <!-- <button class="border-l w-1/2">Post</button> -->
 </div>
 
@@ -67,6 +82,10 @@
                 </div>
             </a>
         {/each}
+    </div>
+
+    <div class="text-center p-5 w-full bg-slate-900 rounded-lg capitalize">
+        place ads here
     </div>
 
     <div class="scroll-container">

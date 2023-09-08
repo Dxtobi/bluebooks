@@ -5,7 +5,7 @@
 
 
 <section class="p-5">
-    <section class=" text-center pb-6 border-b-2">
+    <section class=" text-center pb-6 border-b-2 border-[#fa784a]">
         <h1>{data.user?.username}</h1>
         <h3>{data.user?.email}</h3>
         <p>({data.user?.points})</p>
@@ -25,7 +25,7 @@
             </div>
         </div>
          {#each data.books as book }
-            <div class={`flex justify-between items-center capitalize py-4 border-b-2 border-b-white px-2  ${book.published === 'true' ?' bg-green-100':' bg-yellow-100'}`} >
+            <div class={`mb-1 text-black flex justify-between items-center capitalize py-4 border-b-2 border-b-white px-2  ${book.published === 'true' ?' bg-green-100':' bg-yellow-100'}`} >
                 <div>
                     <h1>{book.title}</h1>
                     <p>{book.subtitle}</p>
