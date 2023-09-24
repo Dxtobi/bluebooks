@@ -84,7 +84,7 @@
         {/each}
     </div>
 
-    <div class="text-center p-5 w-full bg-slate-900 rounded-lg capitalize">
+    <div class="text-center p-5 w-full bg-slate-900 text-white rounded-lg capitalize">
         place ads here
     </div>
 

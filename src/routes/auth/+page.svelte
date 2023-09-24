@@ -144,7 +144,7 @@
 				class="mt-4 px-6 py-2 bg-[#1590f7] text-white "
 				disabled={sending}>{sending ? 'Please wait...' : 'Register'}</button
 			>
-			<div class="mt-4 text-sm text-gray-600">
+			<div class="mt-4 text-sm text-gray-400">
 				Have an account? <button on:click={()=>next=!next} class="text-[#1590f7] hover:underline">Login</button>
 			</div>
 		</form>
@@ -187,7 +187,7 @@
 			class="mt-4 px-6 py-2 bg-[#1590f7] text-white "
 			disabled={sending}>{sending ? 'Please wait...' : 'Login'}</button
 		>
-		<div class="mt-4 text-sm text-gray-600">
+		<div class="mt-4 text-sm text-gray-400">
 			No account? <button  class="text-[#1590f7] hover:underline" on:click={()=>next=!next}>Register</button>
 		</div>
 	</form>

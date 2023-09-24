@@ -36,7 +36,7 @@ import Search from './../../components/icons/Search.svelte';
 </script>
 
 <div class="p-5">
-    <div class=" flex items-center dark:border-[#ffffff] border-[#000000] rounded-2xl border-2 bg-[#fa794a42] p-1">
+    <div class=" flex items-center dark:border-[#ffffff] border-[#000000] rounded-2xl border-2 p-1">
         <input
             class="w-full px-4 py-2 rounded-2xl bg-transparent"
             type="text"
